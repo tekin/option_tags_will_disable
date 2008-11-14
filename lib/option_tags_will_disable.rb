@@ -1,6 +1,7 @@
-# OptionTagsWithDisabled
+# OptionTagsWillDisable
 module ActionView
   module Helpers
+    
     module FormOptionsHelper
 
       def select(object, method, choices, options = {}, html_options = {})
@@ -38,30 +39,30 @@ module ActionView
           options_for_select += options_from_collection_for_select(eval("group.#{group_method}"), option_key_method, option_value_method, selected_key, disabled)
           options_for_select += '</optgroup>'
         end
-      end
-      
-      class InstanceTag #:nodoc:
-
-        def to_select_tag(choices, options, html_options)
-          html_options = html_options.stringify_keys
-          add_default_name_and_id(html_options)
-          value = value(object)
-          selected_value = options.has_key?(:selected) ? options[:selected] : value
-          disabled_value = options.has_key?(:disabled) ? options[:disabled] : []
-          content_tag("select", add_options(options_for_select(choices, selected_value, disabled_value), options, selected_value), html_options)
-        end
-
-        def to_collection_select_tag(collection, value_method, text_method, options, html_options)
-          html_options = html_options.stringify_keys
-          add_default_name_and_id(html_options)
-          value = value(object)
-          disabled_value = options.has_key?(:disabled) ? options[:disabled] : []
-          content_tag(
-            "select", add_options(options_from_collection_for_select(collection, value_method, text_method, value, disabled_value), options, value), html_options
-          )
-        end
-      end
-      
+      end  
     end
+    
+    class InstanceTag
+      
+      def to_select_tag(choices, options, html_options)
+        html_options = html_options.stringify_keys
+        add_default_name_and_id(html_options)
+        value = value(object)
+        selected_value = options.has_key?(:selected) ? options[:selected] : value
+        disabled_value = options.has_key?(:disabled) ? options[:disabled] : []
+        content_tag("select", add_options(options_for_select(choices, selected_value, disabled_value), options, selected_value), html_options)
+      end
+
+      def to_collection_select_tag(collection, value_method, text_method, options, html_options)
+        html_options = html_options.stringify_keys
+        add_default_name_and_id(html_options)
+        value = value(object)
+        disabled_value = options.has_key?(:disabled) ? options[:disabled] : []
+        content_tag(
+          "select", add_options(options_from_collection_for_select(collection, value_method, text_method, value, disabled_value), options, value), html_options
+        )
+      end
+    end
+    
   end
 end
