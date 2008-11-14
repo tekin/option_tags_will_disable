@@ -1,1 +1,1 @@
-require 'option_tags_with_disabled'
+require 'option_tags_will_disable'

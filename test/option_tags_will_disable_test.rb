@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FormOptionsHelperTest < ActionView::TestCase
+class OptionTagsWillDisableTest < ActionView::TestCase
   tests ActionView::Helpers::FormOptionsHelper
 
   test "options for select with disabled value" do

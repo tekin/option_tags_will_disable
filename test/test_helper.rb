@@ -5,4 +5,4 @@ require 'action_controller'
 require 'action_controller/test_process'
 require 'action_view/test_case'
 
-require 'option_tags_with_disabled'
+require 'option_tags_will_disable'
